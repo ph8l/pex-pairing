@@ -1,0 +1,106 @@
+<.flash_group flash={@flash} />
+<div class="min-h-screen bg-white">
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex">
+          <div class="flex-shrink-0 flex items-center">
+            <a href={~p"/"}>
+              <div
+                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-green-300 transition duration-150 ease-in-out"
+                id="user-menu"
+                aria-label="User menu"
+                aria-haspopup="true"
+              >
+                <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-green-500">
+                  <span class="text-lg font-medium leading-none text-white">🍐</span>
+                </span>
+              </div>
+            </a>
+          </div>
+          <div class="hidden sm:ml-6 space-x-8 sm:flex">
+            <a
+              href={~p"/"}
+              class={"#{if @current_path == ~p"/", do: "border-green-500", else: "border-transparent"} border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 text-gray-900 focus:outline-none focus:border-green-700 transition duration-150 ease-in-out"}
+            >
+              Home
+            </a>
+
+            <a
+              href={~p"/teams/settings"}
+              class={"#{if @current_path== ~p"/teams/settings", do: "border-green-500", else: "border-transparent"} border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"}
+            >
+              Settings
+            </a>
+
+            <a
+              href={"mailto:help@pears.dev?subject=Pears Support - Team: #{if @current_team == nil, do: "Anonymous", else: @current_team.name}"}
+              class="border-transparent inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"
+            >
+              Support
+            </a>
+          </div>
+        </div>
+        <div class="flex">
+          <div class="hidden sm:ml-6 space-x-8 sm:flex">
+            <.link
+              href={~p"/teams/log_out"}
+              method="delete"
+              class="inline-flex items-center px-1 pt-1
+              border-transparent border-b-2 text-sm font-medium leading-5 text-gray-500 hover:text-gray-700
+              hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150
+              ease-in-out"
+            >
+              Log out
+            </.link>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="pt-10">
+    <main>
+      <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
+        <!-- Replace with your content -->
+        <%= @inner_content %>
+        <!-- /End replace -->
+      </div>
+    </main>
+  </div>
+
+  <nav class="bg-white">
+    <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex"></div>
+        <div class="flex">
+          <div class="flex-shrink-0 flex items-center">
+            <a
+              href={"mailto:help@pears.dev?subject=Pears Feedback - Team: #{if @current_team == nil, do: "Anonymous", else: @current_team.name}"}
+              title="Send us feedback or questions!"
+            >
+              <div
+                class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition duration-150 ease-in-out"
+                id="feedback-link"
+              >
+                <span class="inline-flex items-center justify-center h-12 w-12 rounded-full bg-white">
+                  <span class="text-lg font-medium leading-none text-gray-500">
+                    <svg
+                      class="-ml-0.5 mr-1 h-6 w-6"
+                      viewBox="0 0 19 24"
+                      stroke="#FFA500"
+                      fill="#FFA500"
+                    >
+                      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                      <line x1="4" y1="22" x2="4" y2="15"></line>
+                    </svg>
+                  </span>
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
